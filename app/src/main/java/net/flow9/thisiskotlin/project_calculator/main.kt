@@ -48,6 +48,7 @@ class Cal(_num1: Int, _num2: Int) {
     var multiple = num1 * num2
     var divide = num1 / num2
     var remain = num1 % num2
+}
 
 fun result(type: String): Any? {
     return when (type) {
