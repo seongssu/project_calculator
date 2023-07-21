@@ -1,13 +1,11 @@
 package net.flow9.thisiskotlin.exp
 
-import android.icu.util.IslamicCalendar.CalculationType
-
 fun main() {
 
     val num1 = result("Num1").toString().toInt()
     val num2 = result("Num2").toString().toInt()
 
-
+    val cal1 = Cal(num1,num2)
     val add1 = AddOperation(num1, num2)
     val minus1 = SubstractOperation(num1, num2)
     val multiple1 = MultiplyOperation(num1, num2)
@@ -50,43 +48,61 @@ fun main() {
         }
         break
     }
+   }
+
+open class Cal(num1:Int,num2: Int) {
+    var _num1 =num1
+    var _num2 = num2
+    var add = _num1 + _num2
+    var minus =_num1 -_num2
+    var multiple = _num1 * _num2
+    var divide = _num1 / _num2
+    var remain = _num1 % _num2
+    open fun addOperation(){
+        add
+    }
+    open fun substractOperation(){
+        minus
+    }
+    open fun multiplyOperation(){
+        multiple
+    }
+    open fun divideOperation(){
+        divide
+    }
+    open fun remain(){
+        remain
+    }
+
 
 }
 
-open class Cal(num1: Int, num2: Int) {
-
-
-}
-
-class AddOperation(num1: Int, num2: Int) {
-    var add = num1 + num2
+class AddOperation(num1: Int, num2: Int) :Cal(num1,num2){
+    override fun addOperation(){
+    }
 
 }
 
-class SubstractOperation(num1: Int, num2: Int) {
+class SubstractOperation(num1: Int, num2: Int):Cal(num1,num2) {
+    override fun substractOperation(){
 
-    var minus = num1 - num2
-
+    }
 }
 
-class MultiplyOperation(num1: Int, num2: Int) {
-    var multiple = num1 * num2
+class MultiplyOperation(num1: Int, num2: Int):Cal(num1,num2) {
+    override fun multiplyOperation() {
+    }
 }
 
-class DivideOperation(num1: Int, num2: Int) {
-    var divide = num1 / num2
-
+class DivideOperation(num1: Int, num2: Int):Cal(num1,num2) {
+    override fun divideOperation(){
+    }
 }
 
-class Remain(num1: Int, num2: Int) {
-
-
-    var remain = num1 % num2
-
+class Remain(num1: Int, num2: Int):Cal(num1,num2) {
+    override fun remain() {
+    }
 }
-
-class AbstractOperation private constructor() {}
-
 fun result(type: String): Any? {
     return when (type) {
         "selectNumber" -> {
